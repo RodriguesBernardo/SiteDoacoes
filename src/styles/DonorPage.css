@@ -1,0 +1,24 @@
+/* src/styles/DonorPage.css */
+.donor-page {
+  padding: 20px;
+}
+
+.map-container {
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: #f9f9f9;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}

@@ -1,0 +1,34 @@
+/* src/styles/mapComponent.css */
+
+/* Garantir que o mapa ocupe toda a altura e largura da tela */
+.map-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Estilo para a div que envolve o mapa */
+  .map-wrapper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+  
+  /* Popups do marcador */
+  .leaflet-popup-content-wrapper {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+  }
+  
+  .leaflet-popup-content {
+    color: #333;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    padding: 10px;
+  }
+  
+  .leaflet-popup-tip {
+    border-top-color: #f8f9fa !important;
+  }
+  
+  

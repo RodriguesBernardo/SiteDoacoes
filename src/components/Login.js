@@ -1,30 +1,24 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
-import receptors from '../data/receptors';  // Importando os dados simulados
-
+import receptors from '../data/receptors'; 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('doador');
   const navigate = useNavigate();
 
-  // Função para verificar o login
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Verificar se o usuário existe nos dados simulados
     const user = receptors.find(
       (user) => user.email === email && user.password === password && user.type === userType
     );
 
     if (user) {
-      // Se o usuário for encontrado, executa o login
       onLogin(userType);
-      navigate('/dashboard'); // Redireciona para o dashboard após login
+      navigate('/dashboard');
     } else {
-      // Se não encontrado, mostra um alerta
       alert('Credenciais inválidas ou usuário não registrado!');
     }
   };

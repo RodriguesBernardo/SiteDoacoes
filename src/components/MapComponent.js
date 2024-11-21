@@ -1,43 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-
-const containerStyle = {
-  width: '100%',
-  height: '400px',
-};
-
-const center = {
-  lat: -29.1662,
-  lng: -51.5175, // Coordenadas de Bento Gonçalves
-};
+import React, { useState } from 'react';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
 const MapComponent = ({ locations }) => {
-  const [mapLoaded, setMapLoaded] = useState(false);
+  const [selectedReceptor, setSelectedReceptor] = useState(null);
 
-  useEffect(() => {
-    setMapLoaded(true); // Marca que o mapa foi carregado
-  }, []);
+  const mapContainerStyle = {
+    height: '400px', 
+    width: '100%', 
+  };
+
+
+  const defaultCenter = { lat: -23.55052, lng: -46.633308 }; 
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyDnGzZitl8iem0pGLORgkFHnFcgIpVsTQk">
-      {mapLoaded && (
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={12}
-        >
-          {locations.map((location) => (
-            <Marker
-              key={location.id}
-              position={{
-                lat: location.position[0],
-                lng: location.position[1],
-              }}
-              label={location.name}
-            />
-          ))}
-        </GoogleMap>
-      )}
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={12}
+        center={selectedReceptor?.location || defaultCenter} 
+      >
+        {locations.map((location) => (
+          <Marker
+            key={location.id}
+            position={location.position}
+            onClick={() => setSelectedReceptor(location)} 
+          />
+        ))}
+
+        {selectedReceptor && (
+          <InfoWindow
+            position={selectedReceptor.position}
+            onCloseClick={() => setSelectedReceptor(null)}
+          >
+            <div>
+              <h4>{selectedReceptor.name}</h4>
+              <p>
+                <strong>Necessidades:</strong> {selectedReceptor.goal}
+              </p>
+            </div>
+          </InfoWindow>
+        )}
+      </GoogleMap>
     </LoadScript>
   );
 };

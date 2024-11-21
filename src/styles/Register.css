@@ -1,4 +1,4 @@
-/* Container Principal */
+
 .register-container {
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@
     box-sizing: border-box;
 }
 
-/* Caixa de Registro */
+
 .register-box {
     background: white;
     padding: 40px 30px;
@@ -22,7 +22,7 @@
     text-align: center;
 }
 
-/* Título */
+
 .register-title {
     font-size: 2.4rem;
     font-weight: bold;
@@ -30,7 +30,7 @@
     margin-bottom: 25px;
 }
 
-/* Formulário */
+
 .register-form-group {
     margin-bottom: 20px;
     text-align: left;
@@ -59,7 +59,7 @@
     box-shadow: 0 0 8px rgba(255, 111, 97, 0.3);
 }
 
-/* Botão */
+
 .btn-register {
     display: block;
     width: 100%;
@@ -78,7 +78,7 @@
     background: #ff8a80;
 }
 
-/* Links */
+
 .register-footer {
     margin-top: 20px;
     font-size: 0.9rem;
@@ -94,7 +94,7 @@
     text-decoration: underline;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
     .register-box {
         padding: 30px 20px;

@@ -1,24 +1,114 @@
-/* src/styles/DonorPage.css */
-.donor-page {
-  padding: 20px;
-}
 
-.map-container {
-  margin-bottom: 20px;
-  border: 2px solid #ddd;
-  border-radius: 10px;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
   overflow: hidden;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.donor-page {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
 }
 
-ul li {
-  background-color: #f9f9f9;
-  margin: 10px 0;
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 10;
+  animation: slide-in-left 0.5s ease-in-out;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.receptor-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.receptor-item {
   padding: 10px;
-  border: 1px solid #ddd;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+.receptor-item:hover {
+  background-color: #f5f5f5;
+}
+
+.details-panel {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 300px;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 20;
+  border-radius: 10px 0 0 10px;
+  animation: slide-in-right 0.5s ease-in-out;
+}
+
+.details-panel h3 {
+  margin-top: 0;
+}
+
+.donate-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
   border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.close-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.donate-button:hover {
+  background-color: #218838;
+}
+
+.close-button:hover {
+  background-color: #c82333;
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

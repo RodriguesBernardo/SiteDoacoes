@@ -7,7 +7,6 @@ import DonorPage from './components/DonorPage';
 import ReceiverDashboard from './components/ReceiverDashboard';
 import 'leaflet/dist/leaflet.css';
 
-
 const App = () => {
   const [userType, setUserType] = useState(null);
 

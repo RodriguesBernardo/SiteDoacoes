@@ -1,7 +1,7 @@
-
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f9f9f9;
   overflow: hidden;
 }
 
@@ -18,17 +18,19 @@ body {
   left: 0;
   width: 300px;
   height: 100%;
-  background-color: #fff;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  overflow-y: auto;
   z-index: 10;
-  animation: slide-in-left 0.5s ease-in-out;
+  overflow-y: auto;
 }
 
 .sidebar h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
 }
 
 .receptor-list {
@@ -38,32 +40,42 @@ body {
 }
 
 .receptor-item {
-  padding: 10px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+  border-radius: 5px;
   cursor: pointer;
-  border-bottom: 1px solid #ddd;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .receptor-item:hover {
-  background-color: #f5f5f5;
+  background-color: #007bff;
+  color: white;
+  transform: scale(1.05);
 }
 
 .details-panel {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 300px;
-  background-color: #fff;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   padding: 20px;
+  width: 300px;
   z-index: 20;
-  border-radius: 10px 0 0 10px;
-  animation: slide-in-right 0.5s ease-in-out;
+  animation: fade-in 0.4s ease;
 }
 
 .details-panel h3 {
   margin-top: 0;
+  color: #333;
+}
+
+.details-panel p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555;
 }
 
 .donate-button {
@@ -75,6 +87,11 @@ body {
   border-radius: 5px;
   cursor: pointer;
   margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+.donate-button:hover {
+  background-color: #218838;
 }
 
 .close-button {
@@ -85,30 +102,20 @@ body {
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.donate-button:hover {
-  background-color: #218838;
+  transition: background-color 0.3s;
 }
 
 .close-button:hover {
   background-color: #c82333;
 }
 
-@keyframes slide-in-left {
+@keyframes fade-in {
   from {
-    transform: translateX(-100%);
+    opacity: 0;
+    transform: translateY(10%);
   }
   to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-in-right {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }

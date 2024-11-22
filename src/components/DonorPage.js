@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import '../styles/DonorPage.css';
 
 const receptors = [
   {
     id: 1,
     name: 'Lar da Caridade',
-    address: 'Rua Júlio de Castilhos, 856, Centro, Bento Gonçalves - RS',
-    location: { lat: -29.1671, lng: -51.5177 },
+    address: 'R. Júlio de Castilhos, 856 - Centro, Bento Gonçalves - RS, 95700-072',
+    location: { lat: -29.16575315563083, lng: -51.508511157600175 },
     goal: 'Alimentos não perecíveis, roupas, itens de higiene pessoal',
   },
   {
     id: 2,
     name: 'Fundação Consepro',
-    address: 'Rua 13 de Maio, 50, Centro, Bento Gonçalves - RS',
-    location: { lat: -29.1685, lng: -51.5189 },
+    address: 'Sala 11C - Andar 1 Rua Avelino Luiz Zat - Fenavinho, Bento Gonçalves - RS, 95700-000',
+    location: { lat: -29.167987622095065, lng: -51.49197639308764 },
     goal: 'Material escolar, livros, itens de informática',
   },
   {
     id: 3,
-    name: 'Cáritas Bento Gonçalves',
-    address: 'Rua Marechal Deodoro, 35, Centro, Bento Gonçalves - RS',
-    location: { lat: -29.1658, lng: -51.5164 },
-    goal: 'Cobertores, utensílios de cozinha, brinquedos',
+    name: 'Associação Anjos Unidos',
+    address: 'Linha Palmeiro - Distrito de - Rodovia, VRS 855, 3973 - São Pedro, Bento Gonçalves - RS, 95700-000',
+    location: { lat: -29.16359420050435, lng: -51.502454089478114 },
+    goal: 'Tampinhas plásticas, lacres, alimentos e itens de higiene.',
   },
 ];
 
@@ -36,47 +36,34 @@ const DonorPage = () => {
 
   const defaultCenter = { lat: -29.1671, lng: -51.5177 };
 
-  const handleMouseOver = (marker, e) => {
-    if (window.google && window.google.maps) {
-      marker.setIcon({
-        url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-        scaledSize: new window.google.maps.Size(40, 40),
-      });
-    }
-  };
-
-  const handleMouseOut = (marker, e) => {
-    if (window.google && window.google.maps) {
-      marker.setIcon({
-        url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
-        scaledSize: new window.google.maps.Size(30, 30),
-      });
-    }
-  };
-
   return (
     <div className="donor-page">
-      <LoadScript googleMapsApiKey="AIzaSyDnGzZitl8iem0pGLORgkFHnFcgIpVsTQk">
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={14}
-          center={defaultCenter}
-        >
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+        <GoogleMap mapContainerStyle={mapContainerStyle} zoom={13} center={defaultCenter}>
           {receptors.map((receptor) => (
             <Marker
               key={receptor.id}
               position={receptor.location}
               onClick={() => setSelectedReceptor(receptor)}
-              icon={{
-                url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                scaledSize: window.google?.maps
-                  ? new window.google.maps.Size(30, 30)
-                  : null, 
-              }}
-              onMouseOver={(e) => handleMouseOver(e, receptor)}
-              onMouseOut={(e) => handleMouseOut(e, receptor)}
             />
           ))}
+
+          {selectedReceptor && (
+            <InfoWindow
+              position={selectedReceptor.location}
+              onCloseClick={() => setSelectedReceptor(null)}
+            >
+              <div>
+                <h3>{selectedReceptor.name}</h3>
+                <p>
+                  <strong>Endereço:</strong> {selectedReceptor.address}
+                </p>
+                <p>
+                  <strong>Necessidades:</strong> {selectedReceptor.goal}
+                </p>
+              </div>
+            </InfoWindow>
+          )}
         </GoogleMap>
       </LoadScript>
 
@@ -94,25 +81,6 @@ const DonorPage = () => {
           ))}
         </ul>
       </div>
-
-      {selectedReceptor && (
-        <div className="details-panel">
-          <h3>{selectedReceptor.name}</h3>
-          <p>
-            <strong>Endereço:</strong> {selectedReceptor.address}
-          </p>
-          <p>
-            <strong>Necessidades:</strong> {selectedReceptor.goal}
-          </p>
-          <button className="donate-button">Doar</button>
-          <button
-            className="close-button"
-            onClick={() => setSelectedReceptor(null)}
-          >
-            Fechar
-          </button>
-        </div>
-      )}
     </div>
   );
 };

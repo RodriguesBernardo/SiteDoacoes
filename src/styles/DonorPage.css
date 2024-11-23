@@ -1,121 +1,111 @@
-body {
-  margin: 0;
-  font-family: 'Roboto', Arial, sans-serif;
-  background-color: #f9f9f9;
-  overflow: hidden;
-}
-
+/* Estilo principal para a página */
 .donor-page {
   display: flex;
-  position: relative;
   height: 100vh;
-  width: 100vw;
+  font-family: Arial, sans-serif;
 }
 
+/* Sidebar estilizada */
 .sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 300px;
-  height: 100%;
-  background-color: #ffffff;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
   padding: 20px;
-  z-index: 10;
-  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar h2 {
-  font-size: 22px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: #333;
-  border-bottom: 2px solid #007bff;
-  padding-bottom: 5px;
+  font-size: 1.5em;
 }
 
-.receptor-list {
+.institution-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.receptor-item {
-  padding: 12px 15px;
+.institution-item {
+  padding: 10px 15px;
   margin-bottom: 10px;
-  background: #f8f9fa;
+  background-color: #1976d2;
+  color: #fff;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
 }
 
-.receptor-item:hover {
-  background-color: #007bff;
-  color: white;
+.institution-item:hover {
+  background-color: #1565c0;
   transform: scale(1.05);
 }
 
-.details-panel {
-  position: fixed;
-  bottom: 10%;
-  right: 5%;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 20px;
-  width: 300px;
-  z-index: 20;
-  animation: fade-in 0.4s ease;
+/* Estilo para o mapa */
+.google-map {
+  flex: 1;
 }
 
-.details-panel h3 {
-  margin-top: 0;
+/* Estilo para o InfoWindow */
+.info-window-container {
+  font-family: Arial, sans-serif;
   color: #333;
+  text-align: center;
+  max-width: 250px;
+  padding: 10px;
 }
 
-.details-panel p {
-  font-size: 14px;
-  margin-bottom: 10px;
+.info-window-header {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 8px;
+}
+
+.info-window-content {
+  font-size: 0.9em;
+  line-height: 1.4em;
   color: #555;
+  margin-bottom: 15px;
 }
 
-.donate-button {
-  background-color: #28a745;
-  color: white;
+.info-window-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.info-window-buttons button {
+  background-color: #1976d2;
+  color: #fff;
   border: none;
-  padding: 10px 15px;
-  font-size: 14px;
-  border-radius: 5px;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  font-weight: bold;
   cursor: pointer;
-  margin-right: 10px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.donate-button:hover {
-  background-color: #218838;
+.info-window-buttons button:hover {
+  background-color: #1565c0;
+  transform: scale(1.05);
 }
 
-.close-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.info-window-buttons button:active {
+  background-color: #0d47a1;
+  transform: scale(0.95);
 }
 
-.close-button:hover {
-  background-color: #c82333;
+.info-window-buttons .close-btn {
+  background-color: #e57373;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.info-window-buttons .close-btn:hover {
+  background-color: #d32f2f;
+}
+
+.info-window-buttons .close-btn:active {
+  background-color: #c62828;
 }

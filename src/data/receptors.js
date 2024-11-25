@@ -45,6 +45,16 @@ const receptors = [
     goal: 'Doar alimentos e roupas',
     type: 'doador',
   },
+  {
+    id: 6,
+    name: 'Por + Empatia',
+    email: 'por+empatia@mail.com',
+    password: '123',
+    address: 'Av. Dr. Antônio Casagrande, 100-130 - Centro',
+    location: { lat: -29.168196057707092, lng: -51.520058686984584 },
+    goal: 'Alimentos para pets, cobertores, brinquedos de pets.',
+    type: 'receptor',
+  },
 ];
 
 export default receptors;
